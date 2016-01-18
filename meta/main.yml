@@ -13,4 +13,7 @@ galaxy_info:
         - 7
         - 6
         - 5
+    - name: Amazon
+      versions:
+        - 2015.09
 dependencies: []

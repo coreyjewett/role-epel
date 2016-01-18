@@ -23,12 +23,14 @@ goozbach_epel_hash:
         preset_file: '90-epel.preset'
         preset_enabled: 1
 
+# for Amazon 2015.09 behave like major 6
+goozbach_distro_major: "{{ (ansible_distribution == \"Amazon\") | ternary(6,ansible_distribution_major_version) }}"
 
-gpgkey_file: "{{ goozbach_epel_hash[ansible_distribution_major_version]['gpgkey_file'] }}"
-macro_file: "{{ goozbach_epel_hash[ansible_distribution_major_version]['macro_file'] }}"
-macro_dir: "{{ goozbach_epel_hash[ansible_distribution_major_version]['macro_dir'] }}"
-doc_dir: "{{ goozbach_epel_hash[ansible_distribution_major_version]['doc_dir'] }}"
-preset_dir: "{{ goozbach_epel_hash[ansible_distribution_major_version]['preset_dir'] }}"
-preset_file: "{{ goozbach_epel_hash[ansible_distribution_major_version]['preset_file'] }}"
-preset_enabled: "{{ goozbach_epel_hash[ansible_distribution_major_version]['preset_enabled'] }}"
-macro_enabled: "{{ goozbach_epel_hash[ansible_distribution_major_version]['macro_enabled'] }}"
+gpgkey_file: "{{ goozbach_epel_hash[goozbach_distro_major]['gpgkey_file'] }}"
+macro_file: "{{ goozbach_epel_hash[goozbach_distro_major]['macro_file'] }}"
+macro_dir: "{{ goozbach_epel_hash[goozbach_distro_major]['macro_dir'] }}"
+doc_dir: "{{ goozbach_epel_hash[goozbach_distro_major]['doc_dir'] }}"
+preset_dir: "{{ goozbach_epel_hash[goozbach_distro_major]['preset_dir'] }}"
+preset_file: "{{ goozbach_epel_hash[goozbach_distro_major]['preset_file'] }}"
+preset_enabled: "{{ goozbach_epel_hash[goozbach_distro_major]['preset_enabled'] }}"
+macro_enabled: "{{ goozbach_epel_hash[goozbach_distro_major]['macro_enabled'] }}"
